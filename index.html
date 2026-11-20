@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ค้นหาข้อมูลโภชนาการจากบาร์โค้ด</title>
+
+  <!-- ฟอนต์ภาษาไทย -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600&family=Noto+Serif+Thai:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- ไฟล์ตกแต่ง -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <!-- ส่วนหัว -->
+    <header class="header">
+      <h1>ค้นหาข้อมูลโภชนาการ</h1>
+      <p class="subtitle">สแกนหรือพิมพ์เลขบาร์โค้ดบนบรรจุภัณฑ์</p>
+    </header>
+
+    <!-- ส่วนสแกนด้วยกล้อง -->
+    <section class="panel">
+      <div id="reader" class="reader hidden"></div>
+
+      <div class="button-row">
+        <button id="openCameraBtn" class="btn btn-primary" type="button">เปิดกล้องสแกน</button>
+        <button id="stopCameraBtn" class="btn btn-secondary hidden" type="button">ปิดกล้อง</button>
+        <button id="nextScanBtn" class="btn btn-primary hidden" type="button">สแกนชิ้นถัดไป</button>
+      </div>
+    </section>
+
+    <!-- ส่วนพิมพ์เลขบาร์โค้ด -->
+    <section class="panel">
+      <label for="barcode" class="label">หรือพิมพ์เลขบาร์โค้ด</label>
+      <div class="search-box">
+        <input id="barcode" type="text" inputmode="numeric" autocomplete="off"
+               placeholder="เช่น 3017620422003">
+        <button id="searchBtn" class="btn btn-primary" type="button">ค้นหา</button>
+      </div>
+    </section>
+
+    <!-- ข้อความแจ้งสถานะ -->
+    <div id="message" class="message hidden"></div>
+
+    <!-- ผลการค้นหา -->
+    <section id="result" class="card hidden">
+      <div id="imageBox" class="card-image"></div>
+
+      <div class="card-body">
+        <h2 id="productName" class="product-name"></h2>
+        <p id="productBrand" class="product-brand"></p>
+        <p id="productBarcode" class="product-barcode"></p>
+
+        <h3 class="nutri-title">คุณค่าทางโภชนาการต่อ 100 กรัม</h3>
+        <table class="nutri-table">
+          <tbody id="nutriTable"></tbody>
+        </table>
+
+        <p class="legend">
+          <span class="badge badge-low">ต่ำ</span>
+          <span class="badge badge-medium">ปานกลาง</span>
+          <span class="badge badge-high">สูง</span>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer">ข้อมูลจาก Open Food Facts</footer>
+  </main>
+
+  <!-- ไลบรารีอ่านบาร์โค้ด (ระบุเวอร์ชันไว้ ป้องกันหน้าเว็บพังเมื่อไลบรารีอัปเดต) -->
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+
+  <!-- โค้ดหลักของเรา -->
+  <script src="script.js"></script>
+</body>
+</html>
